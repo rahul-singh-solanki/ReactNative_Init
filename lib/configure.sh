@@ -98,6 +98,7 @@ setup_navigation_config() {
   # Copy RootStackParams
   copy_template "navigation/RootStackParams.ts" "src/types/RootStackParams.ts"
   # Copy Home Screen
+  mkdir -p src/screens/home
   copy_template "navigation/HomeScreens.tsx" "src/screens/home/index.tsx"
   
   log_success "Navigation configuration completed."
