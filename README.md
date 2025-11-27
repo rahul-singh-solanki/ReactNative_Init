@@ -2,6 +2,8 @@
 
 A comprehensive bash script to bootstrap React Native projects with a pre-configured tech stack including navigation, state management, and code organization best practices.
 
+> **For Developers**: This project uses a modular architecture. See [STRUCTURE.md](STRUCTURE.md) for detailed information about the codebase organization, and [REFACTORING_SUMMARY.md](REFACTORING_SUMMARY.md) for migration notes.
+
 ## Features
 
 - 🚀 Creates a new React Native project with automatic pod installation
@@ -10,6 +12,7 @@ A comprehensive bash script to bootstrap React Native projects with a pre-config
 - ⚙️ Configures Babel, ESLint, Prettier, and TypeScript
 - 🔧 Sets up path aliases for cleaner imports
 - 🌍 Can be installed globally for easy reuse
+- 🏗️ Modular codebase for easy maintenance and extension
 
 ## Quick Start
 
@@ -308,18 +311,52 @@ function MyComponent() {
 
 ## Customization
 
-You can modify the `setup.sh` script to:
-- Add more dependencies
-- Change folder structure
-- Modify linting rules
-- Add additional configuration files
-- Change path aliases
+The script is built with a modular architecture for easy customization:
+
+### For End Users
+You can modify the templates in the `templates/` directory to customize:
+- ESLint, Prettier, Babel, TypeScript configurations
+- Redux store setup and example slices
+- Project README template
+
+### For Developers
+The codebase is organized into focused modules:
+- **`lib/utils.sh`** - Add new utility functions or logging styles
+- **`lib/install-deps.sh`** - Add new package installations
+- **`lib/configure.sh`** - Add new configuration file setups
+- **`templates/`** - Add new template files
+
+See [STRUCTURE.md](STRUCTURE.md) for detailed documentation on extending the script.
+
+## Project Structure
+
+```
+rn_init/
+├── setup.sh                    # Main entry point
+├── lib/                        # Reusable shell modules
+│   ├── utils.sh               # Utility functions
+│   ├── install-deps.sh        # Dependency installation
+│   └── configure.sh           # Configuration setup
+├── templates/                  # Template files
+│   ├── config/                # Config templates
+│   └── redux/                 # Redux templates
+├── README.md                   # User documentation
+├── STRUCTURE.md                # Developer documentation
+└── REFACTORING_SUMMARY.md     # Migration notes
+```
 
 ## License
 
 This script is provided as-is for project initialization purposes.
 
 ## Contributing
+
+We welcome contributions! Please:
+1. Read [STRUCTURE.md](STRUCTURE.md) to understand the architecture
+2. Keep modules focused on single responsibilities
+3. Use the logging functions for consistent output
+4. Add tests for new functionality
+5. Update documentation when adding features
 
 Feel free to fork and customize this script for your team's needs.
 
