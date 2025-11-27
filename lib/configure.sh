@@ -89,6 +89,17 @@ setup_axios_config() {
   log_success "Axios API configuration completed."
 }
 
+setup_navigation_config() {
+  log_info "Configuring Navigation..."
+  
+  # Copy navigator files
+  copy_template "navigator/AppNavigator.tsx" "src/navigator/index.tsx"
+  # Copy RootStackParams
+  copy_template "navigator/RootStackParams.ts" "src/navigator/RootStackParams.ts"
+  
+  log_success "Navigation configuration completed."
+}
+
 # Setup project README
 setup_project_readme() {
   log_art "Adding Default README.md ..."
@@ -106,6 +117,7 @@ configure_all() {
   setup_redux_store
   setup_redux_hooks
   setup_axios_config
+  setup_navigation_config
   setup_project_readme
   log_success "All configuration files created successfully."
 }

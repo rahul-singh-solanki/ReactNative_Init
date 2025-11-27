@@ -13,10 +13,12 @@ module.exports = {
           screens: './src/screens/',
           utils: './src/utils/',
           types: './src/types/',
-          components: './src/components/'
+          components: './src/components/',
+          api: './src/api/',
+          navigator: './src/navigator/',
         }
       }
     ],
     'react-native-worklets/plugin'
   ]
-};
+}
