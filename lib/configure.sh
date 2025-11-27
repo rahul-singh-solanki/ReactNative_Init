@@ -81,7 +81,7 @@ setup_axios_config() {
   copy_template "axios/axiosEnv.ts" "src/api/config/env.ts"
   
   # Copy axios service
-  copy_template "axios/axiosService.ts" "src/api/services/auth.ts"
+  copy_template "axios/axiosService.ts" "src/api/services/products.ts"
   
   # Copy axios types
   copy_template "axios/axiosResponseType.d.ts" "src/api/types/api.d.ts"
@@ -89,13 +89,16 @@ setup_axios_config() {
   log_success "Axios API configuration completed."
 }
 
+# Setup Navigation Configuration
 setup_navigation_config() {
   log_info "Configuring Navigation..."
   
   # Copy navigator files
-  copy_template "navigator/AppNavigator.tsx" "src/navigator/index.tsx"
+  copy_template "navigation/Navigator.tsx" "src/navigator/index.tsx"
   # Copy RootStackParams
-  copy_template "navigator/RootStackParams.ts" "src/navigator/RootStackParams.ts"
+  copy_template "navigation/RootStackParams.ts" "src/types/RootStackParams.ts"
+  # Copy Home Screen
+  copy_template "navigation/HomeScreens.ts" "src/screens/home/index.tsx"
   
   log_success "Navigation configuration completed."
 }

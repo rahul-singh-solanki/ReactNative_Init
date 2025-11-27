@@ -1,24 +1,16 @@
-import apiClient from '../config/axios';
-import type { LoginPayload, LoginResponse } from '../types/api';
+import apiClient from '../config/axios'
 
-function login(payload: LoginPayload): Promise<LoginResponse> {
-  return apiClient
-    .post<LoginResponse>('/auth/login', payload)
-    .then(function (res) {
-      return res.data;
-    });
+export const ProductAPI = {
+  async getPaginatedProducts(page: number, limit: number): Promise<ProductResponse> {
+    const res = await apiClient.get(`/products`, { params: { page, limit } })
+    return res.data
+  },
+  async getProductById(productId: string): Promise<Product> {
+    const res = await apiClient.get(`/products/${productId}`)
+    return res.data
+  },
+  async searchProducts(query: string): Promise<ProductResponse> {
+    const res = await apiClient.get(`/products/search`, { params: { q: query } })
+    return res.data
+  }
 }
-
-function logout(): Promise<void> {
-  return apiClient.post('/auth/logout').then(function () {
-    return;
-  });
-}
-
-function refreshToken(): Promise<LoginResponse> {
-  return apiClient.post<LoginResponse>('/auth/refresh').then(function (res) {
-    return res.data;
-  });
-}
-
-export { login, logout, refreshToken };
